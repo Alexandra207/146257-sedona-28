@@ -7,8 +7,8 @@
   <body>
   	<header>
   		<nav>
-  			<a href="index.html">
-  				<img src="img/logo-sedona.svg" width="138" height="70" alt="Логотип Седона">
+  			<a href="index.html" aria-label="На главную">
+  				<img src="img/logo-sedona.svg" width="138" height="70" alt="">
   	    </a>
   			<ul>
   		    <li><a href="">Информация</a></li>
@@ -19,13 +19,57 @@
   		</nav>
   	</header>
   	<main>
-  		<h1>Результаты поиска гостиниц</h1>
+  		<h1 class="visually-hidden">Результаты поиска гостиниц</h1>
   		<section>
-  			<h2>Фильтр гостиниц</h2>
-  			<!-- Здесь будет форма фильтра гостиниц -->
+  			<h2 class="visually-hidden">Фильтр гостиниц</h2>
+        <form action="https://echo.htmlacademy.ru" method="get">
+          <fieldset>
+            <legend>Инфраструктура:</legend>
+            <ul>
+              <li>
+                <label for="swimming-pool-filter">Бассейн</label>
+                <input type="checkbox" name="swimming-pool" id="swimming-pool-filter" checked>
+              </li>
+              <li>
+                <label for="parking-filter">Парковка</label>
+                <input type="checkbox" name="parking" id="parking-filter">
+              </li>
+              <li>
+                <label for="wifi-filter">Wifi</label>
+                <input type="checkbox" name="wifi" id="wifi-filter">
+              </li>
+            </ul>
+          </fieldset>
+          <fieldset>
+            <legend>Тип жилья:</legend>
+            <ul>
+              <li>
+                <label for="hotel-filter">Гостиница</label>
+                <input type="checkbox" name="hotel" id="hotel-filter" checked>
+              </li>
+              <li>
+                <label for="motel-filter">Мотель</label>
+                <input type="checkbox" name="motel" id="motel-filter" checked>
+              </li>
+              <li>
+                <label for="apartments-filter">Апартаменты</label>
+                <input type="checkbox" name="apartments" id="apartments-filter" checked>
+              </li>
+            </ul>
+          </fieldset>
+          <fieldset>
+            <label for="daily-price-filter">Стоимость в сутки (Р):</label>
+            <div>
+              <span>От 0</span>
+              <span>От 3000</span>
+            </div>
+            <input type="range" name="daily-price" id="daily-price-filter" min="0" max="3000">
+          </fieldset>
+          <button type="submit">Показать</button>
+        </form>
   		</section>
   		<section>
-  			<h2>Список гостиниц</h2>
+  			<h2 class="visually-hidden">Список гостиниц</h2>
   			<ul>
   				<li>
   					<a href=""><img src="img/amara-resort-spa.jpg" width="135" height="90" alt="Фото AMARA RESORT & SPA"></a>
@@ -56,7 +100,7 @@
   					</div>
   				</li>
   				<li>
-  					<a><img src="img/villas-poco-diablo.jpg" width="135" height="90" alt="Фото VILLAS AT POCO DIABLO"></a>
+  					<a href=""><img src="img/villas-poco-diablo.jpg" width="135" height="90" alt="Фото VILLAS AT POCO DIABLO"></a>
   					<div>
   						<a href=""><h3>VILLAS AT POCO DIABLO</h3></a>
   						<span>Апартаменты</span>
@@ -87,7 +131,7 @@
       <div>
         <span>Website by</span>
         <a href="https://htmlacademy.ru/intensive/htmlcss">
-          <img src="img/logo-htmlacademy.svg" width="115" height="41" alt="Логотип Академии">
+          <img src="img/logo-htmlacademy.svg" width="115" height="41" alt="Логотип Академии HTML. Страница интенсива «HTML и CSS. Профессиональная вёрстка сайтов»">
         </a>
       </div>
     </footer>

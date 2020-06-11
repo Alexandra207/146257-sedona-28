@@ -20,7 +20,7 @@
     </header>
     <main>
       <section>
-        <h1>Седона. Поиск Гостиниц</h1>
+        <h1 class="visually-hidden">Седона. Поиск Гостиниц</h1>
         <img src="img/background-index.jpg" width="1200" height="509" alt="">
         <img src="img/mask-background-index.svg" width="1200" height="57" alt="">
         <img src="img/welcome.svg" width="457" height="351" alt="Welcome to the gorgeous Sedona">
@@ -35,8 +35,37 @@
         <img src="img/map.png" width="1200" height="474" alt="Карта с местоположением Седоны">
   		</section>
   		<section>
-  			<h2>Поиск гостиницы в Седоне</h2>
-  			<!-- Здесь будет форма фильтра -->
+  			<h2 class="visually-hidden">Всплывающее окно: Поиск гостиницы в Седоне</h2>
+        <button>Поиск гостиницы в Седоне</button>
+  			<form action="inner.html" method="post">
+          <div>
+            <label for="check-in-date">Дата заезда:</label>
+            <input type="text" name="check-in" id="check-in-date">
+            <button aria-label="Открыть календарь"><img src="img/calendar.svg" width="21" height="21" alt=""></button>
+          </div>
+          <div>
+            <label for="check-out-date">Дата выезда:</label>
+            <input type="text" name="check-out" id="check-out-date">
+            <button aria-label="Открыть календарь"><img src="img/calendar.svg" width="21" height="21" alt=""></button>
+          </div>
+          <div>
+            <label for="adults-number">Взрослые:</label>
+            <div>
+              <span>Плюс</span>
+              <input type="text" name="adults" id="adults-number">
+              <span>Минус</span>
+            </div>
+          </div>
+          <div>
+            <label for="children-number">Дети:</label>
+            <div>
+              <span>Плюс</span>
+              <input type="text" name="children" id="children-number">
+              <span>Минус</span>
+            </div>
+          </div>
+          <button type="submit">Найти</button>
+        </form>
   		</section>
   	</main>
   	<footer>
@@ -54,7 +83,7 @@
   		<div>
         <span>Website by</span>
   			<a href="https://htmlacademy.ru/intensive/htmlcss">
-          <img src="img/logo-htmlacademy.svg" width="115" height="41" alt="Логотип Академии">
+          <img src="img/logo-htmlacademy.svg" width="115" height="41" alt="Логотип Академии HTML. Страница интенсива «HTML и CSS. Профессиональная вёрстка сайтов»">
         </a>
   		</div>
   	</footer>
