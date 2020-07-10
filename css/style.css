@@ -15,6 +15,9 @@
   --basic-dark-gray:#ebebeb;
   --footer-color:rgba(255, 255, 255, 0.9);
   --html-logo-active:#BDBBBC;
+  --inner-toggle-filter: #ABABAB;
+  --border-form-active: #E5E5E5;
+  --traingle-gray: #CACACA;
 }
 /*Global*/
 body{
@@ -35,6 +38,19 @@ img{
   max-width: 100%;
   height: auto;
 }
+.visually-hidden:not(:focus):not(:active),
+input[type="checkbox"].visually-hidden,{
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
 /* Grid*/
 .page {
   height: 100%;
@@ -45,17 +61,11 @@ img{
   grid-template-rows: min-content 1fr min-content;
   align-content: start;
 }
-/* Main header удалить подсветку и нижний отсуп*/
+/* Main header*/
 .main-header{
-  margin-bottom: 70px;
-  outline: 5px solid rgba(0, 255, 0, 0.3);
-  outline-offset: -5px;
   position: relative;
 }
 .main-navigation{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   color: var(--basic-black);
   background: transparent;
 }
@@ -65,15 +75,12 @@ img{
 }
 /* Logo */
 .main-header-logo{
-  /*order: 1;*/
   width: 138px;
   height: 70px;
   position: absolute;
   top: 0;
   left: 50%;
   transform: translate(-50%, 0);
-  outline: 5px solid rgba(255, 0, 0, 0.3);
-  outline-offset: -5px;
 }
 /* Container */
 .container{
@@ -83,18 +90,21 @@ img{
 }
 /* Site navigation*/
 .site-navigation{
-  outline: 5px solid rgba(0, 255, 255, 0.3);
-  outline-offset: -5px;
-  margin: 0;
-  padding: 0;
   list-style: none;
   display: flex;
   flex-wrap: wrap;
+  padding: 0 72px;
+}
+.site-navigation li{
+  width: 25%;
+}
+.site-navigation li:last-child,
+.site-navigation li:nth-child(3){
+  text-align: right;
 }
 .site-navigation a{
   color: var(--basic-black);
   font-weight: bold;
-  padding-right:
 }
 .site-navigation a:hover,
 .site-navigation a:focus,
@@ -112,25 +122,23 @@ img{
   background-color: var(--footer-color);
   color: var(--basic-black);
   font-weight: bold;
-  padding: 36px 0;
+  margin-top: -120px;
+  padding-top: 23px;
+  padding-bottom: 36px;
+  padding-right: 138px;
+  padding-left: 153px;
   margin: 0px;
-}
-.main-footer .container {
-  /*display: flex;
-  flex-direction: row;
-  justify-content: space-around;*/
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  column-gap: 190px;
-  justify-items: center;
-  /*align-items: end;*/
-  /*display: flex;
-  justify-content: space-around;*/
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .footer-contacts{
   font-size: 21px;
-  margin-left: 110px;
   width: 225px;
+}
+.footer-contacts span{
+  display: inline-block;
+  margin-bottom: 9px;
 }
 .footer-contacts a{
   color: var(--basic-black);
@@ -143,8 +151,6 @@ img{
 }
 .footer-social{
   width: 150px;
-  justify-self: center;
-  text-align: center;
 }
 .footer-social ul{
   display: flex;
@@ -170,14 +176,14 @@ img{
 .footer-social a:active{
   background-color: var(--basic-dark-blue);
 }
-.footer-copyright {
-  width: 200px;
-  margin: 0px;
-  margin-right: 138px;
-  /*justify-self: end;*/
+.footer-copyright a{
+  display: inline-block;
+  vertical-align: middle;
 }
 .footer-copyright span{
   font-weight: normal;
+  display: inline-block;
+  vertical-align: middle;
 }
 .footer-copyright path:hover,
 .footer-copyright path:focus{
@@ -189,80 +195,282 @@ img{
 /*Index + состояния названий апартментов из Inner*/
 .index-welcome{
   background-color: var(--basic-light-blue);
-  background-image: url("../img/background-index.jpg");
+  background-image:  url("../img/mask-background-index.svg"), url("../img/background-index.jpg");
   background-repeat: no-repeat, no-repeat;
-  background-position: center, center;
+  background-position: bottom center, center;
+  padding-top: 77px;
+  padding-bottom: 81px;
 }
-/* делать флексом или нет
-.intro{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
+.index-welcome img{
+  display: block;
+  margin: 0 auto;
 }
-*/
 .introduction{
   width: 100%;
   border-top: 1px solid transparent;
   border-bottom: 1px solid transparent;
+  padding-top: 43px;/*возможно 42 проверить пиксель перф*/
+  padding-bottom: 51px;
 }
 .index-introduction{
   width: 470px;
   font-size: 21px;
   line-height: 26px;
-  white-space: pre-wrap;
   text-align: center;
-  margin-left: 365px;
-  margin-right: 365px;
-  margin-top: 42.5px;
-  margin-bottom: 16.5px;
-  padding-bottom: 30px;
+  margin: 0 auto;
+  margin-bottom: 50px;/*возможно 42 проверить пиксель перф*/
 }
 .reasons-introduction{
+  width: 519px;
+  margin: 0 auto;
   font-size: 14px;
   text-align: center;
-  margin-left: 341px;
-  margin-right: 340px;
-  margin-bottom: 51px;
+}
+/*Index: reasons block*/
+.reason-first h2:::before,
+.reason-first h2::after {
+  display: block;
+  content: "";
+  width: 180px;
+  height: 2px;
+  background: var(--basic-black);
+}
+/*Проверка работы класса
+.interested::before,
+.interested::after {
+  display: block;
+  content: "";
+  width: 10px;
+  height: 2px;
+  background: var(--basic-black);
+}*/
+.reasons{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.reason-1{
+  display: flex;
 }
 .interest{
   width: 100%;
   border-top: 1px solid transparent;
   border-bottom: 1px solid transparent;
-  outline: 5px solid rgba(0, 255, 0, 0.3);
-  outline-offset: -5px;
+  padding-top: 58px;
 }
 .interested{
   width: 435px;
   font-size: 30px;
   line-height: 24px;
   text-align: center;
-  margin-top: 61px;
-  margin-left: 383px;
-  margin-right: 382px;
-  outline: 5px solid rgba(255, 0, 0, 0.3);
-  outline-offset: -5px;
+  margin: 0 auto;
+  margin-bottom: 30px;/*высчитать отступ*/
 }
 .description-form{
-  display: inline-block;
   width: 435px;
   line-height: 24px;
-  white-space: pre-wrap;
   text-align: center;
-  margin-left: 383px;
-  margin-right: 382px;
+  margin: 0 auto;
   margin-bottom: 78px;
-  outline: 5px solid rgba(0, 255, 255, 0.3);
-  outline-offset: -5px;
-  padding-bottom: 70px;
+}
+.interest img{
+  display: block;
+}
+/* Form Index*/
+.accommodation-form{
+  width: 568px;
+  border: 1px solid red;
+  box-shadow: 0px 7px 15px rgba(0, 1, 1, 0.15);
+  /*position: fiexed;
+  top: 2083px;*/
+  /*width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;*/
+}
+.accommodation-form .accommodation-search{
+  width: 568px;
+  font: inherit;
+  background-color: var(--basic-light-brown);
+  text-transform: uppercase;
+  font-size: 21px;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  color: var(--basic-white);
+  border: none;
+  vertical-align: middle;
+  margin-top: ;
+}
+.accommodation-form .accommodation-search:hover,
+.accommodation-form .accommodation-search:focus{
+  background-color: var(--basic-brown);
+}
+.accommodation-form .accommodation-search:active{
+  background-color: var(--basic-dark-brown);
+  opacity: 0.3;/*задать только тексту не всей кнопке*/
+}
+.accommodation-form form{
+  padding: 55px;
+}
+.accommodation-form .search{
+  width: 458px;
+  font: inherit;
+  text-transform: uppercase;
+  font-size: 21px;
+  line-height: 26px;
+  font-weight: bold;
+  background-color: var(--basic-light-blue);
+  text-align: center;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  color: var(--basic-white);
+  border: none;
+  vertical-align: middle;
+}
+.accommodation-form .search:hover,
+.accommodation-form .search:focus{
+  background-color: var(--basic-blue);
+}
+.accommodation-form .search:active{
+  background-color: var(--basic-dark-blue);
+  opacity: 0.3;/*задать только тексту не всей кнопке*/
+}
+.search-variables label{
+  font-weight: bold;
+  display: inline-block;
+  /*width: 121px;*/
+}
+.search-variables label:nth-child(2n){
+  /*width: 125px;*/
+}
+.accommodation-form .search-variables{
+  position: relative;
+  margin-bottom: 29px;
+}
+.search-variables input{
+  font: inherit;
+  background-color: var(--inner-background-gray);
+  /*color: var(--basic-black);*/
+  border: none;
+  padding: 5px;
+  width: 346px;
+  /*position: relative;*/
+}
+.search-variables input[type="text"]::placeholder{
+  font: inherit;
+  color: var(--basic-black);
+  font-weight: bold;
+}
+.search-variables button{
+  position: absolute;
+  right: 5px;
+  border: none;
+  background-color: transparent;
+  vertical-align: middle;
+  padding: 0;
+}
+/*.accommodation-form .search-variables::after{
+  content: "";
+  position: absolute;
+  width: 21px;
+  height: 23px;
+  top: 10px;
+  right: 10px;
+  background-image: url("../img/calendar.svg");
+  background-repeat: no-repeat;
+  background-position: 0 0;
+}
+*/
+.search-variables input:first-child,
+.search-variables input:nth-child(2n){
+  /*width: 346px;*/
+}
+.search-variables input:nth-child(3n),
+.search-variables input:last-child{
+  /*width: 114px;*/
+}
+.search-variables input:hover,
+.search-variables input:focus{
+  background-color: var(--basic-dark-gray);
+}
+.search-variables input:active{
+  background-color: var(--basic-white);
+  border: 2px solid var(--border-form-active);
+}
+.search-variables path:hover,
+.search-variables path:focus{
+  fill: var(--basic-black);
+}
+.footer-copyright path:active{
+  fill: var(--basic-light-blue);
 }
 /*Inner*/
 .site-navigation .current{
   color: var(--basic-light-brown);
 }
+.filters{
+  background-color: var(--basic-light-blue);
+  background-image: url("../img/background-inner.jpg");
+  background-repeat: no-repeat, no-repeat;
+  width: 1200px;
+}
 .filter{
   color: var(--basic-white);
   line-height: 21px;
+  display: flex;
+  padding-right: 73px;/*возможно 72*/
+  padding-left: 73px;
+  padding-bottom: 31px;
+  padding-top: 27px;
+}
+.filter .filter-one{
+  margin-right: 119px;
+}
+.filter .filter-two{
+  margin-right: 347px;
+}
+.filter-item,
+.filter-item-price{
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+.filter-option label{
+  position: relative;
+  display: block;
+  cursor: pointer;
+  user-select: none;
+}
+.filter-input-checkbox + label::before {
+  content: "";
+  position: absolute;
+  left: -39px;
+  top: 0;
+  width: 23px;
+  height: 23px;
+  border: 2px solid var(--basic-white);
+  z-index: 100;
+}
+.filter-input-checkbox:checked + label::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: -31px;
+  width: 23px;
+  height: 17px;
+  background-image: url("../img/tick.svg");
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  z-index: 200;
+}
+.filter-item li{
+  margin-bottom: 23px;
+}
+.filter-item input{
+  border:
 }
 .filter legend{
   font-size: 16px;
@@ -271,11 +479,69 @@ img{
 .filter ul{
   list-style: none;
 }
-.inner-button-filter{
+.range-filter {
+  width: 317px;
+  margin-top: 10px;
+  border: 3px solid green;
+}
+.price-controls{
+  margin-bottom: 20px;
+}
+.price-controls label {
+  line-height: 21px;
+}
+.price-controls input {
+  font-family: inherit;
+  font-size: inherit;
+}
+.range-controls{
+  /*margin-top: 20px;*/
+  position: relative;
+  height: 6px;
+  padding-top: 4px;
+  border: 2px solid red;
+}
+.range-controls .scale {
+  height: 2px;
+  background: var(--basic-white);
+  opacity: 0.3;
+}
+.range-controls .bar {
+  width: 70%;
+  height: 2px;
+  background: var(--basic-white);
+}
+.range-controls .toggle {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  width: 4px;
+  height: 4px;
+  padding: 0;
+  border: 8px solid var(--basic-white);
+  background-color: var(--inner-toggle-filter);
+  border-radius: 50%;
+  box-shadow: 0 2px 1px 0 #cfcfcf;
+  cursor: pointer;
+}
+.filter-three .inner-button-filter{
+  width: 137px;
+  display: inline-block;
+  padding: 8px 35px;
   font: inherit;
   color: var(--basic-white);
   background-color: transparent;
   border: 2px solid var(--basic-white);
+  margin: 0 auto;
+  margin-top: 33px;
+  text-align: center;
+  vertical-align: middle;
+  text-transform: uppercase;
+}
+.filter-three .inner-button-filter:hover,
+.filter-three .inner-button-filter:focus{
+  color: var(--basic-black);
+  background-color: var(--basic-white);
 }
 .apartments{
   margin: 0;
@@ -283,81 +549,59 @@ img{
 }
 .apartment-list{
   list-style: none;
-  /*display: flex;
-  flex-direction: column;
-  margin: 0;*/
+  padding: 0;
  }
 .apartment-item{
   display: flex;
-  justify-content: space-around;
-
-  /*display: grid;
-  grid-template-columns: 1fr 3fr 1fr;
-  column-gap: 20px;
-  padding-top: 50px;
-  padding-bottom: 30px;*/
-  border-top: 2px solid var(--inner-background-gray);
-  border-bottom: 2px solid var(--inner-background-gray);
+  align-items: center;
+  border-bottom: 1px solid var(--inner-background-gray);
+  padding: 0 73px;
+  padding-top: 24px;
+  padding-bottom: 30px
+}
+.apartment-item:first-child{
+  border-top: 1px solid var(--inner-background-gray);
 }
 .apartment-item .apartment-information{
-  /*margin: 0;
-  margin-right: 100px;
-  padding: 0;
-  align-self: end;*/
   margin-right: auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-content: start;
-  width: 258px;
+  width: 268px;
 }
-.apartment-photo{
-  margin-right: 29px;
-  /*margin: 0;
-  margin-left: 73px;
-  padding: 0;
-  width: 135px;
-  align-self: end;*/
+.apartment-name{
+  margin: 0;
 }
 .apartment-photo img{
   width: 135px;
   height: 90px;
+  display: block;
+  margin-right: 29px;
 }
 .apartment-ranking{
-  outline: 5px solid rgba(0, 288, 255, 0.3);
-  outline-offset: -5px;
-  margin-left: auto;
-  /*margin-right: 85px;
-  align-self: end;
-  display: flex;
-  flex-direction: column;
-  align-items: end;*/
-  /*display: grid;
-  grid-template-rows: 1fr 1fr;
-  grid-row-gap: 47px;
-  justify-items: center;*/
 }
 .apartment-ranking .stars{
-  outline-offset: -5px;
-  outline: 5px solid rgba(0, 0, 25, 0.7);
-  /*align-self: start;*/
-  margin-bottom: auto;
-
+  display: block;
+  text-align: right;
+  /*background-image: url("../img/star.svg");*/
+}
+.stars img{
+  vertical-align: middle;
+}
+.stars img:not(:last-child){
+  margin-right: 5px;
 }
 .apartment-ranking .apartment-item-ranking{
-  outline-offset: -5px;
-  outline: 5px solid rgba(255, 0, 2, 0.7);
-  /*width: 110px;
-  padding: 0;
-  align-self: start;*/
-}
-/*
-.apartment-item{
-  display; flex;
-}
-*/
-.apartment-item-name{
+  text-align: center;
   margin: 0;
-  padding: 0;
+  margin-top: 50px;
+  line-height: 21px;
+  color: var(--inner-text-gray);
+  background-color: var(--inner-background-gray);
+  min-width: 110px;
+}
+.apartment-item-name{
+  margin-bottom: 7px;
   color: var(--basic-black);
   font-size: 21px;
   font-weight: bold;
@@ -366,12 +610,12 @@ img{
 .apartment-item-type{
   width: 126px;
   line-height: 21px;
-  margin-bottom: 15.5px;
+  margin-bottom: 16px;
 }
 .apartment-item-price{
   width: 96px;
   line-height: 21px;
-  margin-bottom: 15.5px;
+  margin-bottom: 16px;
 }
 .apartment-item .more-information{
   color: var(--basic-white);
@@ -379,6 +623,7 @@ img{
   margin-right: 8px;
   width: 110px;
   text-align: center;
+  line-height: 21px;
 }
 .apartment-item .more-information:hover,
 .apartment-item .more-information:focus{
@@ -393,6 +638,7 @@ img{
   background-color: var(--basic-light-brown);
   width: 142px;
   text-align: center;
+  line-height: 21px;
 }
 .apartment-item .book:hover,
 .apartment-item .book:focus{
@@ -402,13 +648,20 @@ img{
   background-color: var(--basic-dark-brown);
   opacity: 0.3;
 }
-.apartment-item-ranking{
-  line-height: 21px;
-  text-align: center;
-  color: var(--inner-text-gray);
-  background-color: var(--inner-background-gray);
+.results .results-list{
+  position: relative;
 }
-/*Временно отключаю невидимые элементы*/
+.results .results-list::after{
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 10px solid var(--traingle-gray);
+  margin-left: -10px;
+}
 .visually-hidden{
   display: none;
 }
