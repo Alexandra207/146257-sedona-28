@@ -15,7 +15,7 @@
     				<img src="img/logo-sedona.svg" width="138" height="70" alt="">
     	    </a>
           <div class="main-navigation-wrapper">
-      			<ul class="site-navigation">
+      			<ul class="clear-ul site-navigation">
       		    <li><a href="">Информация</a></li>
         			<li><a href="">Фото и Видео</a></li>
         			<li><a href="">Карта Штата</a></li>
@@ -34,7 +34,7 @@
                 <legend>Инфраструктура:</legend>
                 <ul>
                   <li class="filter-option">
-                    <input class="visually-hidden filter-input-checkbox" type="checkbox" name="swimming-pool" id="swimming-pool-filter" checked>
+                    <input class="visually-hidden" type="checkbox" name="swimming-pool" id="swimming-pool-filter" checked>
                     <label for="swimming-pool-filter">Бассейн</label>
                   </li>
                   <li class="filter-option">
@@ -73,10 +73,10 @@
                 <div class="range-filter">
                   <div class="price-controls">
                     <label class="min-price">
-                      от <input type="number" name="min-price" value="0">
+                      от <input type="text" name="min-price" value="0">
                     </label>
                     <label class="max-price">
-                      до <input type="number" name="max-price" value="3000">
+                      до <input type="text" name="max-price" value="3000">
                     </label>
                   </div>
                   <div class="range-controls">
@@ -94,14 +94,21 @@
     		</section>
         <section class="results">
           <h2 class="visually-hidden">Результаты поиска</h2>
-          <ul class="results-list">
-            <li><p>Найдено:3</p></li>
-            <li><p>Сортировка:</p></li>
-            <li><button>По цене</button></li>
-            <li><button>По типу</button></li>
-            <li><button>По рейтингу</button></li>
-            <li><span>Вверх</span></li>
-            <li><span>Вниз</span></li>
+          <ul class="clear-ul results-list">
+            <li><p class="searched">Найдено: 3</p></li>
+            <li><p class="classification">Сортировка:</p></li>
+            <li><a class="by-price" href="">По цене</a></li>
+            <li><a class="by-type" href="">По типу</a></li>
+            <li><a class="by-ranking" href="">По рейтингу</a></li>
+            <li>
+              <button class="button-triangle button-up">
+                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="10" viewBox="0 0 11 10"><path fill="#CACACA" d="M5.5 0L0 10h11z"/></svg>
+              </button>
+            <li>
+              <button class="button-triangle button-down">
+                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="10" viewBox="0 0 11 10"><path fill="#81B3D2" d="M5.5 10L0 0h11"/></svg>
+              </button>
+            </li>
           </ul>
         </section>
     		<section class="apartaments">
